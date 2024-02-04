@@ -1,0 +1,14 @@
+@using BuyUsedCars.Models
+@model Image
+
+<h1 class="text-center mb-3">Are you sure you want to remove the image?</h1>
+
+<form method="post" asp-action="RemoveImage" enctype="multipart/form-data">
+    <input type="hidden" value="Id">
+    <div class="form-group">
+        <div class="d-sm-block img-fluid m-3" style="max-width: 250px; object-fit: cover;">
+            <img src=@Model.ImageUrl class="img-thumbnail" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-danger">Remove</button>
+</form>

@@ -1,0 +1,57 @@
+@using BuyUsedCars.ViewModels
+@using BuyUsedCars.Models.Enum
+@model AddCarViewModel
+
+<h1 class="text-center mb-3">Add a New Car</h1>
+
+<form method="post" asp-action="AddCar" enctype="multipart/form-data">
+    <input type="hidden" name="UserId" id="UserId" asp-for="UserId"/>
+    <div class="form-group">
+        <label asp-for="Make">Make</label>
+        <input asp-for="Make" type="text" class="form-control" placeholder="Enter make">
+        <span asp-validation-for="Make" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Model">Model</label>
+        <input asp-for="Model" type="text" class="form-control" placeholder="Enter model">
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" type="number" class="form-control" placeholder="Enter price €">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Km">Km</label>
+        <input asp-for="Km" type="number" class="form-control" placeholder="Enter km">
+        <span asp-validation-for="Km" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" type="text" class="form-control" placeholder="Enter year">
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DetailedDescription">Description</label>
+        <textarea asp-for="DetailedDescription" class="form-control" rows="3" placeholder="Enter description"></textarea>
+        <span asp-validation-for="DetailedDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CardDescription">Short Description</label>
+        <textarea asp-for="CardDescription" class="form-control" rows="1" placeholder="Enter short description"></textarea>
+        <span asp-validation-for="CardDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FuelCategory">Fuel</label>
+        <select asp-for="FuelCategory" asp-items="@Html.GetEnumSelectList<FuelCategory>()" class="form-control" placeholder="Enter fuel type">
+            <option selected="selected" value="">--Select--</option>
+        </select>
+        <span asp-validation-for="Km" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="Enter Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>

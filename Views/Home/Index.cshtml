@@ -1,0 +1,24 @@
+﻿@using BuyUsedCars.ViewModels
+@model IEnumerable<CarsAndImagesViewModel>
+    
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Check our stock of used cars.</p>
+</div>
+<div class="container d-sm-flex flex-wrap">
+@foreach(var car in Model){
+    <div class="card" style="width: 18rem; margin-left: 20px; margin-bottom: 20px;">
+        <img class="card-img-top" style="width: 100%; height: 50%; object-fit: cover;" src=@Url.Content(car.ImageUrl)>
+        <div class="card-body">
+            <h5 class="card-title">@(car.Make + " " + car.Model)</h5>
+            <p class="card-text">@car.CardDescription</p>
+            <a asp-controller="Home" asp-action="Detail" asp-route-id="@car.CarId" type="button" class="btn btn-primary">View car</a>
+            @if(User.Identity.IsAuthenticated && User.IsInRole("admin")){
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@car.CarId" type="button" class="btn btn-primary">Edit car</a>
+                <a asp-controller="Home" asp-action="RemoveCar" asp-route-id="@car.CarId" type="button" class="btn btn-danger">Delete car</a>
+            }
+        </div>
+    </div>
+}
+</div>
+

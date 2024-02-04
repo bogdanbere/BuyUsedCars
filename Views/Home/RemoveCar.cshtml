@@ -1,0 +1,12 @@
+@using BuyUsedCars.Models
+@model Car
+
+<h1 class="text-center mb-3">Are you sure you want to Delete this car?</h1>
+
+<form method="post" asp-action="RemoveCar">
+    <input type="hidden" name="Id" id="Id" asp-for="Id"/>
+    <div class="form-group">
+        <p class="h3">@(Model.Make + " " + @Model.Model)</p>
+    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>

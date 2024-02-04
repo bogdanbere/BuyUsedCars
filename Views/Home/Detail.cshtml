@@ -1,0 +1,44 @@
+﻿@using BuyUsedCars.ViewModels
+@model CarByIdViewModel
+
+
+<h2 class="text-center mb-5" style="font-weight: bold;">@(Model.Make + " " + Model.Model)</h2>
+
+<div class="container d-flex flex-row justify-content-center" style="max-width: 80vw;">
+@foreach(var image in Model.ImagesList){  
+<div class="d-sm-block img-fluid m-3" style="max-width: 250px; object-fit: cover;">
+    <img src=@image.ImageUrl alt=@(image.Car.Make+image.Car.Model) class="img-thumbnail" />
+</div>
+}
+</div>
+
+<div class="container d-flex justify-content-around mt-5">
+    <div>
+        <ul class="list-group d-flex text-center justify-content-center">
+            <li class="list-group-item">Make: @Model.Make</li>
+            <li class="list-group-item">Model: @Model.Model</li>
+            <li class="list-group-item">Year: @Model.Year</li>
+            <li class="list-group-item">Km: @Model.Km</li>
+            <li class="list-group-item">Fuel: @Model.FuelCategory</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Description:</h3>
+        <p class="mt-3">@Model.DetailedDescription</p>
+
+        <h4 class="mt-4">Price: @(Model.Price)€</h4>
+    </div>
+
+    <div>
+        <ul class="list-group d-flex text-center justify-content-center">
+            <li class="list-group-item">User: @Model.UserName</li>
+            <li class="list-group-item">Phone Number: @Model.PhoneNumber</li>
+        </ul>
+    </div>
+
+</div>
+
+@if(User.Identity.IsAuthenticated && User.IsInRole("admin")){
+    <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id" type="button" class="btn btn-primary mt-3">Edit car</a>
+}

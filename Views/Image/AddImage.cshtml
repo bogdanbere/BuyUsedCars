@@ -1,0 +1,14 @@
+@using BuyUsedCars.ViewModels
+@model AddImageViewModel
+
+<h1 class="text-center mb-3">Add image</h1>
+<form method="post" asp-action="AddImage" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="hidden" Value="Id">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <input type="hidden" value="@Model.CarId" id="Id"/>
+    <button type="submit" class="btn btn-primary">Add Image</button>
+</form>
